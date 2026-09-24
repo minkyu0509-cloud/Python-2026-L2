@@ -1,5 +1,5 @@
 USTH Advanced Programming with Python 2026
 ==================================
 
-* Le Nguyen Minh Kieu
+* Lê Nguyễn Minh Kiều 
 * 2410509
