@@ -1,0 +1,22 @@
+import pandas as pd
+students = pd.read_csv('students.csv')
+scores = pd.read_csv('scores.csv')
+print("số lượng dữ liệu thiếu \n")
+print(students.isnull().sum())
+print(scores.isna().sum())
+students_clean = students.dropna()
+scores_clean = scores.dropna()
+print("số lượng dữ liệu thiếu sau khi loại bỏ \n")
+print(students_clean.shape)
+print(scores_clean.shape)
+print("sau khi fillna \n")
+print(students.fillna(0).describe())
+print(scores.fillna(0).describe())
+#part 2
+df_merged = pd.merge(students_clean, scores_clean, on='student_id')
+df_merged['average_score'] = df_merged[['math','python','database']].mean(axis=1)
+print("sau khi merge \n")
+print(df_merged.head())
+print("top 5 sinh viên có điểm trung bình cao nhất \n", df_merged.sort_values("average_score",ascending=False).head(5))
+print("điểm trung bình theo chuyên ngành",df_merged.groupby('major')['average_score'].mean())
+
