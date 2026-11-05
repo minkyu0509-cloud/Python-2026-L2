@@ -74,8 +74,7 @@ class Management:
             
 
     def __background_save(self,data):
-        print("\n [thread]")
-        time.sleep(2)
+        
         with gzip.open("data.pkl.gz","wb") as f:
             pickle.dump(data, f)
         print("\n[thread] save!")
@@ -105,7 +104,7 @@ class Management:
                 c = Course()
                 c.input()
                 self.__courses.append(c)
-            self.trigger_save_threaf()
+            self.trigger_save_thread()
     def add_mark(self):
             course_id = input("Enter course ID to add marks: ")
             target_course = None
